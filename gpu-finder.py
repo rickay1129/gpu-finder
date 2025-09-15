@@ -129,11 +129,21 @@ def create_instance(compute, project, config, zone_list):
             for j in range(compute_config['number_of_instances']):
                 print(f"Creating instance number {instances+1} of {compute_config['number_of_instances']} in {zone_config['zone']}, zone {zones_attempted+1} out of {len(zones)} attempted.")
                 image_project = compute_config['instance_config']['image_project']
-                image_family = compute_config['instance_config']['image_family']
-                image_response = compute.images().getFromFamily(
-                    project=image_project, family=image_family).execute()
+                
+                # image_family = compute_config['instance_config']['image_family']
+                # image_response = compute.images().getFromFamily(
+                #     project=image_project, family=image_family).execute()
+                
+                image_name = compute_config['instance_config']['image_family']
+                image_response = compute.images().get(
+                    project=image_project, image=image_name).execute()
+                
                 source_disk_image = image_response['selfLink']
-                instance_name = compute_config['instance_config']['name'] + '-' + str(instances+1) + '-' + zone_config['zone']
+                
+                # instance_name = compute_config['instance_config']['name'] + '-' + str(instances+1) + '-' + zone_config['zone']
+                
+                instance_name = compute_config['instance_config']['name']
+                
                 # Configure the machine
                 machine_type = f"zones/{zone_config['zone']}/machineTypes/{compute_config['instance_config']['machine_type']}"
                 # startup_script = open(

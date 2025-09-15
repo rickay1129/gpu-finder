@@ -1,9 +1,9 @@
 {
-  "project_id": "jared-playground",
-  "bucket_name": "find-gcp-gpus",
-  "number_of_instances": 3,
+  "project_id": "ecbm4040-kk3764",
+  "bucket_name": "",
+  "number_of_instances": 1,
   "instance_config": {
-    "name": "demo-instance",
+    "name": "instance-20250915-165200",
     "root_persistent_disk": {
       "boot": "True",
       "autoDelete": "True"
@@ -13,16 +13,16 @@
     "network_interfaces": {
       "network": "global/networks/default"
     },
-    "gpu_type": "nvidia-tesla-v100",
-    "number_of_gpus": 4,
-    "image_project": "deeplearning-platform-release",
-    "image_family": "tf2-2-4-cu110",
+    "gpu_type": "nvidia-tesla-t4",
+    "number_of_gpus": 1,
+    "image_project": "ecbm4040-ta",
+    "image_family": "ecbm4040-imageforstudents-tf24",
     "identity_and_api_access": {
       "service_account_email": "default",
       "scopes": "https://www.googleapis.com/auth/cloud-platform"
     },
     "disk_type": "pd-balanced",
-    "disk_size": "50",
+    "disk_size": "100",
     "firewall_rules": [
       "http-server",
       "https-server"
